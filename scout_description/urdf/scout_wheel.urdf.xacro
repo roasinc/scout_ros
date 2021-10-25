@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="scout_wheel">
+
+  <xacro:macro name="scout_wheel" params="prefix type *origin">
+
+    <link name="${prefix}_wheel">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://scout_description/meshes/${type}.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://scout_description/meshes/${type}.dae"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="3"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <!--inertia ixx="0.7171" ixy="0.0" ixz="0.0" iyy="0.1361" iyz="0.0" izz="0.7171"/-->
+        <inertia ixx="0.02467" ixy="0" ixz="0" iyy="0.04411" iyz="0" izz="0.02467"/>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${prefix}_wheel"/>
+      <xacro:insert_block name="origin"/>
+      <axis xyz="0 1 0" rpy="0 0 0"/>
+      <!--limit effort="200" velocity="200"/>
+      <joint_properties damping="0" friction="0"/-->
+    </joint>
+
+    <gazebo reference="${prefix}_wheel">
+      <mu1 value="1.0"/>
+      <mu2 value="1.0"/>
+      <fdir1 value="1 0 0"/>
+      <kp value="10000000.0"/>
+      <kd value="1.0"/>
+      <minDepth value="0.001"/>
+      <!--turnGravityOff>false</turnGravityOff-->
+    </gazebo>
+
+    <transmission name="${prefix}_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}_wheel_joint">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}_wheel_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+        <!--motorTorqueConstant>20</motorTorqueConstant-->
+      </actuator>
+    </transmission>
+
+  </xacro:macro>
+
+</robot>

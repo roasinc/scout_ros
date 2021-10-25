@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="use_gui" value="true"/>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scout_description)/rviz/scout.rviz" />
+
+</launch>

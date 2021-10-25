@@ -1,0 +1,72 @@
+scout_base_controller:
+  type        : "diff_drive_controller/DiffDriveController"
+  left_wheel  : ['front_left_wheel_joint', 'rear_left_wheel_joint']
+  right_wheel : ['front_right_wheel_joint', 'rear_right_wheel_joint']
+  publish_rate: 50.0  
+  pose_covariance_diagonal : [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+  twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+
+  # Wheel separation and diameter
+  wheel_separation: 0.583
+  wheel_radius    : 0.165
+
+  # Wheel separation and radius multipliers
+  wheel_separation_multiplier: 1.0
+  wheel_radius_multiplier    : 1.0
+
+  # Velocity commands timeout [s]
+  cmd_vel_timeout: 0.25
+
+  # Base frame_id
+  base_frame_id: base_link
+
+  # Odom frame id
+  odom_frame_id: odom
+
+  enable_odom_tf: true
+
+  linear:
+    x:
+      has_velocity_limits    : true
+      max_velocity           : 1.5  # m/s
+      min_velocity           : -1.5 # m/s
+      has_acceleration_limits: true
+      max_acceleration       : 2.0  # m/s^2
+      min_acceleration       : -2.0 # m/s^2
+  angular:
+    z:
+      has_velocity_limits    : true
+      max_velocity           : 0.5  # rad/s
+      min_velocity           : -0.5 # rad/s
+      has_acceleration_limits: true
+      max_acceleration       : 1.0  # rad/s^2
+      min_acceleration       : -1.0 # rad/s^2
+
+
+scout_joint_state_controller:
+  type: joint_state_controller/JointStateController 
+  publish_rate: 50.0
+
+
+twist_mux:
+  topics:
+  - name    : Joystick
+    topic   : teleop/cmd_vel
+    timeout : 0.5
+    priority: 100
+
+  - name    : Navigation
+    topic   : move_base/cmd_vel
+    timeout : 0.5
+    priority: 50
+
+  - name    : External
+    topic   : cmd_vel
+    timeout : 0.5
+    priority: 10
+
+  locks:
+  - name    : Software Runstop
+    topic   : software_runstop
+    timeout : 0.0    
+    priority: 150

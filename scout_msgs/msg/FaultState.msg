@@ -1,0 +1,3 @@
+bool battery_under_voltage_failure
+bool battery_under_voltage_alarm 
+bool loss_remote_control

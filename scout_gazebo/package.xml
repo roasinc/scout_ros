@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>scout_gazebo</name>
+  <version>0.2.0</version>
+  <description>
+    For gazebo simulation
+  </description>
+  <maintainer email="shlee@roas.co.kr">Brighten Lee</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_ros_control</depend>
+  <depend>gazebo_plugins</depend>
+
+</package>

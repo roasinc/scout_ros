@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>scout_ros</name>
+  <version>0.2.0</version>
+  <description> 
+    The meta package for Scout 
+  </description>
+  <maintainer email="shlee@roas.co.kr">Brighten Lee</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>scout_base</exec_depend>
+  <exec_depend>scout_control</exec_depend>
+  <exec_depend>scout_description</exec_depend>
+  <exec_depend>scout_gazebo</exec_depend>
+  <exec_depend>scout_msgs</exec_depend>
+  <export>
+    <metapackage/>
+  </export>
+</package>
