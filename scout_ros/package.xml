@@ -15,6 +15,7 @@
   <exec_depend>scout_description</exec_depend>
   <exec_depend>scout_gazebo</exec_depend>
   <exec_depend>scout_msgs</exec_depend>
+  <exec_depend>scout_navigation</exec_depend>
   <export>
     <metapackage/>
   </export>
