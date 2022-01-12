@@ -15,5 +15,6 @@
   <depend>realtime_tools</depend>
   <depend>std_srvs</depend>
   <depend>std_msgs</depend>
+  <depend>scout_lib</depend>
   <depend>scout_msgs</depend>
 </package>
