@@ -115,7 +115,7 @@ private:
   string robot_name_;
 
   /// Joint name
-  vector<string> joint_ = { "front_left_wheel_joint", "front_right_wheel_joint", "rear_left_wheel_joint",
+  vector<string> joint_ = { "front_left_wheel_joint", "rear_left_wheel_joint", "front_right_wheel_joint",
                             "rear_right_wheel_joint" };
 
   /// Control frequency

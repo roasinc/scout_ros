@@ -237,10 +237,10 @@ void CANBridge::robotState(uint8_t* data)
   robot_state_.fault_state.battery_under_voltage_alarm = bitset<8>(data[5])[1];
   robot_state_.fault_state.loss_remote_control = bitset<8>(data[5])[2];
 
-  driver_state_.communication_failure[0] = bitset<8>(data[5])[6];
-  driver_state_.communication_failure[1] = bitset<8>(data[5])[5];
   driver_state_.communication_failure[2] = bitset<8>(data[5])[3];
   driver_state_.communication_failure[3] = bitset<8>(data[5])[4];
+  driver_state_.communication_failure[1] = bitset<8>(data[5])[5];
+  driver_state_.communication_failure[0] = bitset<8>(data[5])[6];
 }
 
 void CANBridge::motorState(size_t index, uint8_t* data)
