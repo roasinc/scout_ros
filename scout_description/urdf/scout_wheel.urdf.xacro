@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="scout_wheel">
 
-  <xacro:macro name="scout_wheel" params="prefix type *origin">
+  <xacro:macro name="scout_wheel" params="prefix type position *origin">
 
     <link name="${prefix}_wheel">
       <visual>
-        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <xacro:if value="${position == 'left'}">
+          <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        </xacro:if>
+        <xacro:if value="${position == 'right'}">
+          <origin xyz="0.0 0.0 0.0" rpy="${PI} 0 0"/>
+        </xacro:if>
         <geometry>
           <mesh filename="package://scout_description/meshes/${type}.dae"/>
         </geometry>

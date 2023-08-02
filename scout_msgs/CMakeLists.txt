@@ -9,14 +9,14 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_message_files(
   FILES
-  LightCommand.msg
-  FaultState.msg
-  RobotState.msg
-  MotorState.msg
-  DriverState.msg
-  Light.msg
-  LightState.msg
   BatteryState.msg
+  DriverState.msg
+  FaultState.msg
+  Light.msg
+  LightCommand.msg
+  LightState.msg
+  MotorState.msg
+  RobotState.msg
 )
 
 generate_messages(DEPENDENCIES

@@ -34,17 +34,16 @@ THE POSSIBILITY OF SUCH DAMAGE.
 #include "controller_manager/controller_manager.h"
 #include "realtime_tools/realtime_publisher.h"
 
-#include "scout_lib/scout_driver.h"
+#include "scout_lib/scout_controller.h"
 #include "scout_lib/scout_hardware.h"
-//#include "scout_lib/scout_diagnostics.h"
 
 #include "std_msgs/Bool.h"
 #include "scout_msgs/RobotState.h"
 #include "scout_msgs/MotorState.h"
 #include "scout_msgs/DriverState.h"
 #include "scout_msgs/LightState.h"
-#include "scout_msgs/BatteryState.h"
 #include "scout_msgs/LightCommand.h"
+#include "scout_msgs/BatteryState.h"
 #include "std_srvs/Trigger.h"
 
 using namespace std;
@@ -79,36 +78,6 @@ public:
   bool clearFailure(std_srvs::Trigger::Request& req, std_srvs::Trigger::Response& resp);
 
   /**
-   * \brief Publish robot state data
-   */
-  void publishRobotState();
-
-  /**
-   * \brief Publish motor state data
-   */
-  void publishMotorState();
-
-  /**
-   * \brief Publish driver state data
-   */
-  void publishDriverState();
-
-  /**
-   * \brief Publish light state data
-   */
-  void publishLightState();
-
-  /**
-   * \brief Publish battery state data
-   */
-  void publishBatteryState();
-
-  /**
-   * \brief Publish estop state
-   */
-  void publishEstopState();
-
-  /**
    * \brief Loop for publishing
    */
   void publishLoop();
@@ -118,8 +87,8 @@ public:
    */
   void controlLoop();
 
-  /// Communication system with motor driver
-  shared_ptr<ScoutDriver> driver_;
+  /// Communication system with robot
+  shared_ptr<ScoutController> robot_;
 
   /// Hardware interface for robot
   shared_ptr<ScoutHardware> hw_;
@@ -127,28 +96,20 @@ public:
   /// Controller manager for the infrastructure to interact with controllers
   shared_ptr<controller_manager::ControllerManager> cm_;
 
-  /// Diagnostics system to collect information from hardware drivers and robot
-  // shared_ptr<ScoutDiagnostics> diagnostics_;
-
 private:
   /// ROS parameters
   ros::NodeHandle nh_;
   ros::NodeHandle nh_priv_;
-
   ros::Subscriber sub_front_light_cmd_, sub_rear_light_cmd_;
 
-  realtime_tools::RealtimePublisher<scout_msgs::RobotState> rp_robot_;
-  realtime_tools::RealtimePublisher<scout_msgs::MotorState> rp_motor_;
-  realtime_tools::RealtimePublisher<scout_msgs::DriverState> rp_driver_;
-  realtime_tools::RealtimePublisher<scout_msgs::LightState> rp_light_;
-  realtime_tools::RealtimePublisher<scout_msgs::BatteryState> rp_battery_;
-  realtime_tools::RealtimePublisher<std_msgs::Bool> estop_;
+  realtime_tools::RealtimePublisher<scout_msgs::RobotState> rp_robot_state_;
+  realtime_tools::RealtimePublisher<scout_msgs::MotorState> rp_motor_state_;
+  realtime_tools::RealtimePublisher<scout_msgs::DriverState> rp_driver_state_;
+  realtime_tools::RealtimePublisher<scout_msgs::LightState> rp_light_state_;
+  realtime_tools::RealtimePublisher<scout_msgs::BatteryState> rp_battery_state_;
+  realtime_tools::RealtimePublisher<std_msgs::Bool> estop_state_;
 
   ros::ServiceServer clear_failure_;
-
-  /// Serial parameters
-  string port_;
-  int32_t baud_;
 
   /// Robot name
   string robot_name_;

@@ -36,19 +36,19 @@
     <origin xyz="0 0 0.2365" rpy="0 0 0"/>
   </joint>
 
-  <xacro:scout_wheel prefix="front_left" type="wheel_1">
+  <xacro:scout_wheel prefix="front_left" type="wheel_1" position="left">
     <origin xyz="0.249 0.2915 0.165" rpy="0 0 0"/>
   </xacro:scout_wheel>
 
-  <xacro:scout_wheel prefix="rear_left" type="wheel_2">
+  <xacro:scout_wheel prefix="rear_left" type="wheel_2" position="left">
     <origin xyz="-0.249 0.2915 0.165" rpy="0 0 0"/>
   </xacro:scout_wheel>
 
-  <xacro:scout_wheel prefix="front_right" type="wheel_2">
+  <xacro:scout_wheel prefix="front_right" type="wheel_2" position="right">
     <origin xyz="0.249 -0.2915 0.165" rpy="0 0 0"/>
   </xacro:scout_wheel>
 
-  <xacro:scout_wheel prefix="rear_right" type="wheel_1">
+  <xacro:scout_wheel prefix="rear_right" type="wheel_1" position="right">
     <origin xyz="-0.249 -0.2915 0.165" rpy="0 0 0"/>
   </xacro:scout_wheel>
 

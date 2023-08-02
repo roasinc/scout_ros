@@ -1,1 +1,0 @@
-SUBSYSTEM=="tty", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", SYMLINK="scout", MODE="0666"

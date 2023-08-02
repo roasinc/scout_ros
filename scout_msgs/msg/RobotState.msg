@@ -1,7 +1,9 @@
 Header header
 
 string robot
-string state             # NORMAL, STOP, ERROR
+
+bool normal_state 
 string control_mode      # IDLE, CAN, SERIAL, REMOTE, NONE
+float64 battery_voltage
 
 scout_msgs/FaultState fault_state

@@ -1,3 +1,8 @@
+scout_joint_state_controller:
+  type: joint_state_controller/JointStateController 
+  publish_rate: 50.0
+
+  
 scout_base_controller:
   type        : "diff_drive_controller/DiffDriveController"
   left_wheel  : ['front_left_wheel_joint', 'rear_left_wheel_joint']
@@ -31,21 +36,16 @@ scout_base_controller:
       max_velocity           : 1.5  # m/s
       min_velocity           : -1.5 # m/s
       has_acceleration_limits: true
-      max_acceleration       : 2.0  # m/s^2
-      min_acceleration       : -2.0 # m/s^2
+      max_acceleration       : 1.5  # m/s^2
+      min_acceleration       : -1.5 # m/s^2
   angular:
     z:
       has_velocity_limits    : true
       max_velocity           : 0.5  # rad/s
       min_velocity           : -0.5 # rad/s
       has_acceleration_limits: true
-      max_acceleration       : 1.0  # rad/s^2
-      min_acceleration       : -1.0 # rad/s^2
-
-
-scout_joint_state_controller:
-  type: joint_state_controller/JointStateController 
-  publish_rate: 50.0
+      max_acceleration       : 0.5  # rad/s^2
+      min_acceleration       : -0.5 # rad/s^2
 
 
 twist_mux:

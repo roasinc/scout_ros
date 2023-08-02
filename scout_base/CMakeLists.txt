@@ -29,7 +29,7 @@ add_dependencies(scout_base_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EX
 target_link_libraries(scout_base_node ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 install(
-  DIRECTORY config launch lib rules
+  DIRECTORY launch
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 

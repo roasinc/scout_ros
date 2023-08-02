@@ -1,24 +1,15 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="port" default="/dev/ttyUSB0"/>
-  <arg name="robot" default="scout"/>
-
-  <!-- Communication with the robot's driver -->
+  <!-- Communication with the robot's controller -->
   <node pkg="scout_base" type="scout_base_node" name="scout_base_node" output="screen">
-    <param name="port" value="$(arg port)"/>
-    <param name="robot" value="$(arg robot)"/>
+    <param name="can_device" value="can0"/>
   </node>
-
-  <!-- Diagnostic aggregator to use rqt_robot_monitor -->
-  <!--node pkg="diagnostic_aggregator" type="aggregator_node" name="diagnostic_aggregator">
-    <rosparam command="load" file="$(find scout_base)/config/analyzers.yaml" />
-  </node--> 
 
   <!-- Load the robot's URDF --> 
   <include file="$(find scout_description)/launch/description.launch"/>
 
-  <!-- Robot controllers and localization -->
+  <!-- Robot controllers -->
   <include file="$(find scout_control)/launch/control.launch"/>
 
 </launch>
