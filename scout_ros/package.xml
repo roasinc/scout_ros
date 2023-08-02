@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>scout_ros</name>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
   <description> 
     The meta package for Scout 
   </description>
@@ -13,9 +13,8 @@
   <exec_depend>scout_base</exec_depend>
   <exec_depend>scout_control</exec_depend>
   <exec_depend>scout_description</exec_depend>
-  <exec_depend>scout_gazebo</exec_depend>
+  <exec_depend>scout_lib</exec_depend>
   <exec_depend>scout_msgs</exec_depend>
-  <exec_depend>scout_navigation</exec_depend>
   <export>
     <metapackage/>
   </export>
