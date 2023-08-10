@@ -323,8 +323,8 @@ void CANBridge::velocity(uint8_t* data)
   double right = (linear + (angular * wheel_separation_ / 2.0)) / wheel_radius_;
 
   motor_state_.velocity[0] = left;
-  motor_state_.velocity[1] = right;
-  motor_state_.velocity[2] = left;
+  motor_state_.velocity[1] = left;
+  motor_state_.velocity[2] = right;
   motor_state_.velocity[3] = right;
 }
 
@@ -337,8 +337,8 @@ void CANBridge::position(uint8_t* data)
                                        (static_cast<uint32_t>(data[6]) << 8) | static_cast<uint32_t>(data[7]));
 
   motor_state_.position[0] = left / 1000.0 / wheel_radius_;
-  motor_state_.position[1] = right / 1000.0 / wheel_radius_;
-  motor_state_.position[2] = left / 1000.0 / wheel_radius_;
+  motor_state_.position[1] = left / 1000.0 / wheel_radius_;
+  motor_state_.position[2] = right / 1000.0 / wheel_radius_;
   motor_state_.position[3] = right / 1000.0 / wheel_radius_;
 }
 
