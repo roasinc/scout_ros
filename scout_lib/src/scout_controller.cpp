@@ -124,7 +124,7 @@ void ScoutController::sendLightCommand(const string target, const LightCommand& 
     light_.data[4] = cmd.custom_brightness;
 
     if (can_bridge_->light_state_.front_light.mode == "NC")
-      light_.data[6] = 0x00;
+      light_.data[1] = 0x00;
     else if (can_bridge_->light_state_.front_light.mode == "NO")
       light_.data[1] = 0x01;
     else if (can_bridge_->light_state_.front_light.mode == "BL")
