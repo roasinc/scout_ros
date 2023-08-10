@@ -10,10 +10,15 @@ ROS packages for Scout 2.0
 [Manual](https://docs.roas.co.kr/scout.html)
 
 ## Installation
+
+### Install packages
 ```
 cd ~/catkin_ws/src/
 git clone https://github.com/roasinc/scout_ros.git
+```
 
+### Build
+```
 cd ~/catkn_ws/
 rosdep install --from-paths src --ignore-src -y
 catkin_make
