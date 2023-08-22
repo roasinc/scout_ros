@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>scout_ros</name>
-  <version>0.2.1</version>
-  <description> 
-    The meta package for Scout 
+  <version>0.2.2</version>
+  <description>
+    The meta package for Scout
   </description>
   <maintainer email="shlee@roas.co.kr">Brighten Lee</maintainer>
   <license>BSD</license>

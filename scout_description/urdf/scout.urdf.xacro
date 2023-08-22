@@ -1,55 +1,55 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="scout">
 
-  <xacro:include filename="$(find scout_description)/urdf/scout_wheel.urdf.xacro"/>
+  <xacro:include filename="$(find scout_description)/urdf/scout_wheel.urdf.xacro" />
 
-  <xacro:property name="PI" value="3.1415926535897931"/>
+  <xacro:property name="PI" value="3.1415926535897931" />
 
   <link name="base_link">
     <visual>
-      <origin xyz="0.0 0.0 0.2365" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.2365" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://scout_description/meshes/scout.dae"/>
+        <mesh filename="package://scout_description/meshes/scout.dae" />
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0.0 0.0 0.2365" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.2365" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://scout_description/meshes/scout.dae"/>
+        <mesh filename="package://scout_description/meshes/scout.dae" />
       </geometry>
     </collision>
   </link>
 
   <link name="inertial_link">
     <inertial>
-      <mass value="40"/>
-      <origin rpy=" 0 0 0" xyz="0 0 0"/>
+      <mass value="40" />
+      <origin rpy=" 0 0 0" xyz="0 0 0" />
       <!--inertia ixx="2.288641" ixy="0.0" ixz="0.0" iyy="5.103976" iyz="0.0" izz="3.431465"/-->
-      <inertia ixx="2.42811" ixy="0.00503" ixz="0.09703" iyy="2.52291" iyz="0.10757" izz="0.18274"/>
+      <inertia ixx="2.42811" ixy="0.00503" ixz="0.09703" iyy="2.52291" iyz="0.10757" izz="0.18274" />
       <!--inertia ixx="0.6022" ixy="-0.02364" ixz="-0.1197" iyy="1.7386" iyz="-0.001544" izz="2.0296"/-->
     </inertial>
   </link>
 
   <joint name="inertial_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="inertial_link"/>
-    <origin xyz="0 0 0.2365" rpy="0 0 0"/>
+    <parent link="base_link" />
+    <child link="inertial_link" />
+    <origin xyz="0 0 0.2365" rpy="0 0 0" />
   </joint>
 
   <xacro:scout_wheel prefix="front_left" type="wheel_1" position="left">
-    <origin xyz="0.249 0.2915 0.165" rpy="0 0 0"/>
+    <origin xyz="0.249 0.2915 0.165" rpy="0 0 0" />
   </xacro:scout_wheel>
 
   <xacro:scout_wheel prefix="rear_left" type="wheel_2" position="left">
-    <origin xyz="-0.249 0.2915 0.165" rpy="0 0 0"/>
+    <origin xyz="-0.249 0.2915 0.165" rpy="0 0 0" />
   </xacro:scout_wheel>
 
   <xacro:scout_wheel prefix="front_right" type="wheel_2" position="right">
-    <origin xyz="0.249 -0.2915 0.165" rpy="0 0 0"/>
+    <origin xyz="0.249 -0.2915 0.165" rpy="0 0 0" />
   </xacro:scout_wheel>
 
   <xacro:scout_wheel prefix="rear_right" type="wheel_1" position="right">
-    <origin xyz="-0.249 -0.2915 0.165" rpy="0 0 0"/>
+    <origin xyz="-0.249 -0.2915 0.165" rpy="0 0 0" />
   </xacro:scout_wheel>
 
   <gazebo>

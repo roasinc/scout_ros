@@ -57,7 +57,7 @@ public:
 
   /**
    * \brief Send the motor command
-   * \param cmd Motor command message for each motors (rad)
+   * \param cmd Motor command message for each motors (rad/s)
    */
   void sendMotorCommand(const MotorCommand& cmd);
 
@@ -78,11 +78,11 @@ public:
   shared_ptr<CANBridge> can_bridge_;
 
 private:
-  /// ROS
+  /// ROS parameters
   ros::NodeHandle nh_;
   ros::NodeHandle nh_priv_;
 
-  /// SocketCAN
+  /// SocketCAN parameters
   string can_device_;
   can::Frame motion_, light_;
 

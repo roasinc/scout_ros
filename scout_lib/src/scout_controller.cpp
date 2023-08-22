@@ -29,8 +29,6 @@ THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "scout_lib/scout_controller.h"
 
-#define BUFFER_SIZE 39
-
 ScoutController::ScoutController(ros::NodeHandle& nh, ros::NodeHandle& nh_priv, RobotState& robot_state,
                                  MotorState& motor_state, DriverState& driver_state, LightState& light_state,
                                  BatteryState& battery_state)

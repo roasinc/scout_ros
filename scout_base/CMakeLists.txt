@@ -4,8 +4,8 @@ project(scout_base)
 add_compile_options(-std=c++14)
 
 find_package(catkin REQUIRED COMPONENTS
-  roscpp 
-  controller_manager 
+  roscpp
+  controller_manager
   realtime_tools
   std_srvs
   std_msgs
@@ -35,7 +35,7 @@ install(
 
 install(
   DIRECTORY include/${PROJECT_NAME}/
-   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
 
 install(

@@ -37,12 +37,12 @@ template <>
 can::FrameFilterSharedPtr tofilter(const XmlRpc::XmlRpcValue& ct)
 {
   XmlRpc::XmlRpcValue t(ct);
-  try  // try to read as integer
+  try
   {
     uint32_t id = static_cast<int>(t);
     return tofilter(id);
   }
-  catch (...)  // else read as string
+  catch (...)
   {
     return tofilter(static_cast<string>(t));
   }
@@ -51,8 +51,7 @@ can::FrameFilterSharedPtr tofilter(const XmlRpc::XmlRpcValue& ct)
 
 CANBridge::CANBridge(ros::NodeHandle* nh, ros::NodeHandle* nh_param, can::DriverInterfaceSharedPtr driver,
                      RobotState& robot_state, MotorState& motor_state, DriverState& driver_state,
-                     LightState& light_state, BatteryState& battery_state, double wheel_radius,
-                     double wheel_separation_)
+                     LightState& light_state, BatteryState& battery_state, double wheel_radius, double wheel_separation)
   : driver_(driver)
   , robot_state_(robot_state)
   , motor_state_(motor_state)
@@ -61,7 +60,7 @@ CANBridge::CANBridge(ros::NodeHandle* nh, ros::NodeHandle* nh_param, can::Driver
   , battery_state_(battery_state)
   , estop_state_(false)
   , wheel_radius_(wheel_radius)
-  , wheel_separation_(wheel_separation_)
+  , wheel_separation_(wheel_separation)
 {
   can_topic_ = nh->advertise<can_msgs::Frame>("messages", 1);
 }
@@ -102,9 +101,7 @@ void CANBridge::convertSocketCANToMessage(const can::Frame& f, can_msgs::Frame& 
   m.is_extended = f.is_extended;
 
   for (int i = 0; i < 8; i++)
-  {
     m.data[i] = f.data[i];
-  }
 }
 
 void CANBridge::convertMessageToSocketCAN(const can_msgs::Frame& m, can::Frame& f)
@@ -116,9 +113,7 @@ void CANBridge::convertMessageToSocketCAN(const can_msgs::Frame& m, can::Frame& 
   f.is_extended = m.is_extended;
 
   for (int i = 0; i < 8; i++)
-  {
     f.data[i] = m.data[i];
-  }
 };
 
 void CANBridge::frameCallback(const can::Frame& f)
@@ -132,15 +127,13 @@ void CANBridge::frameCallback(const can::Frame& f)
   else
   {
     if (f.is_error)
-    {
       ROS_WARN("Received frame is error: %s", can::tostring(f, true).c_str());
-    }
   }
 
   can_msgs::Frame msg;
   convertSocketCANToMessage(f, msg);
 
-  msg.header.frame_id = "";  // empty frame is the de-facto standard for no frame.
+  msg.header.frame_id = "";
   msg.header.stamp = ros::Time::now();
 
   can_topic_.publish(msg);

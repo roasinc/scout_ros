@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <launch>
 
-  <rosparam file="$(find scout_control)/config/control.yaml" command="load"/>
+  <rosparam file="$(find scout_control)/config/control.yaml" command="load" />
 
   <!-- Load the base controllers -->
-  <node pkg="controller_manager" type="spawner" output="screen" name="controller_spawner" 
-    args="scout_base_controller scout_joint_state_controller"/>
+  <node pkg="controller_manager" type="spawner" output="screen" name="controller_spawner"
+    args="scout_base_controller scout_joint_state_controller" />
 
   <!-- Twist Mux -->
   <node pkg="twist_mux" type="twist_mux" name="twist_mux">
-    <remap from="/cmd_vel_out" to="/scout_base_controller/cmd_vel"/>
+    <remap from="/cmd_vel_out" to="/scout_base_controller/cmd_vel" />
   </node>
 
   <!-- If the robot has an IMU sensor, can use EKF Localization -->

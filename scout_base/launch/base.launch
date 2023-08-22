@@ -3,13 +3,13 @@
 
   <!-- Communication with the robot's controller -->
   <node pkg="scout_base" type="scout_base_node" name="scout_base_node" output="screen">
-    <param name="can_device" value="can0"/>
+    <param name="can_device" value="can0" />
   </node>
 
-  <!-- Load the robot's URDF --> 
-  <include file="$(find scout_description)/launch/description.launch"/>
+  <!-- Load the robot's URDF -->
+  <include file="$(find scout_description)/launch/description.launch" />
 
   <!-- Robot controllers -->
-  <include file="$(find scout_control)/launch/control.launch"/>
+  <include file="$(find scout_control)/launch/control.launch" />
 
 </launch>

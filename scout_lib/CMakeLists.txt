@@ -3,13 +3,13 @@ project(scout_lib)
 
 add_compile_options(-std=c++14)
 
-find_package(catkin REQUIRED COMPONENTS 
-roscpp 
-controller_manager 
-hardware_interface
-can_msgs
-socketcan_interface
-rosconsole_bridge
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  controller_manager
+  hardware_interface
+  can_msgs
+  socketcan_interface
+  rosconsole_bridge
 )
 
 catkin_package(
